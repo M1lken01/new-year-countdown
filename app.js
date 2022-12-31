@@ -1,4 +1,4 @@
-const timeZone = +1;
+const timeZone = +0;
 
 const targetDate = new Date('2022-12-31T24:00:00');
 const timeZoneDiff = 3600000 * timeZone
