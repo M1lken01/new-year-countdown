@@ -42,7 +42,9 @@ function updateTime() {
 }
 
 function w() {
+    console.log('xd')
     timeZone = document.getElementsByTagName('input')[0].value;
+    timeZoneDiff = 3600000 * timeZone;
     updateTime();
     if (document.getElementsByClassName('end').length)
         document.getElementsByClassName('end')[0].classList.remove('end');
