@@ -1,14 +1,15 @@
-const timeZone = +0;
+let timeZone = +1;
 
-const targetDate = new Date('2022-12-31T24:00:00');
-const timeZoneDiff = 3600000 * timeZone
-const countDownStart = 10000 // 10 sec
+let targetDate = new Date('2022-12-31T24:00:00');
+let timeZoneDiff = 3600000 * timeZone
+let countDownStart = 10000 // 10 sec
 
 updateTime();
 
 function updateTime() {
     let currentDate = new Date();
     let timeLeft = targetDate - currentDate - timeZoneDiff;
+    console.log(timeLeft)
     if (timeLeft <= countDownStart) {
         document.body.classList.add('countdown');
     }
@@ -37,5 +38,17 @@ function updateTime() {
         setTimeout(function() {
             updateTime()
         }, 1000);
+    }
+}
+
+function w() {
+    timeZone = document.getElementsByTagName('input')[0].value;
+    updateTime();
+    if (document.getElementsByClassName('end').length)
+        document.getElementsByClassName('end')[0].classList.remove('end');
+    if (document.getElementsByClassName('countdown').length)
+        document.getElementsByClassName('countdown')[0].classList.remove('countdown');
+    while (document.getElementsByClassName('red').length > 0) {
+        document.getElementsByClassName('red')[0].classList.remove('red');
     }
 }
