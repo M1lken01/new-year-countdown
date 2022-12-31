@@ -9,10 +9,7 @@ updateTime();
 function updateTime() {
     let currentDate = new Date();
     let timeLeft = 1672531200000 - currentDate.getTime() - timeZoneDiff; // replace 1672531200000 with targetDate.getTime()
-    document.getElementById('a').value = targetDate.getTime();
-    document.getElementById('b').value = currentDate.getTime();
-    document.getElementById('c').value = timeZoneDiff;
-    document.getElementById('d').value = timeLeft;
+    let timeLeftDate = new Date(timeLeft);
     if (timeLeft <= countDownStart) {
         document.body.classList.add('countdown');
     }
@@ -24,7 +21,7 @@ function updateTime() {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
-        }).format(timeLeft);
+        }).format(timeLeftDate);
         let timerOutput = document.getElementsByClassName('number');
         let checks = 0;
         for (let i = 0; i < timerOutput.length; i++) {
@@ -41,19 +38,5 @@ function updateTime() {
         setTimeout(function() {
             updateTime()
         }, 1000);
-    }
-}
-
-function w() {
-    console.log('xd')
-    timeZone = document.getElementsByTagName('input')[0].value;
-    timeZoneDiff = 3600000 * timeZone;
-    updateTime();
-    if (document.getElementsByClassName('end').length)
-        document.getElementsByClassName('end')[0].classList.remove('end');
-    if (document.getElementsByClassName('countdown').length)
-        document.getElementsByClassName('countdown')[0].classList.remove('countdown');
-    while (document.getElementsByClassName('red').length > 0) {
-        document.getElementsByClassName('red')[0].classList.remove('red');
     }
 }
