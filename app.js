@@ -1,6 +1,6 @@
+//et timeZone = new Intl.DateTimeFormat('en-GB').resolvedOptions().timeZone;
 let timeZone = +1;
-
-let targetDate = new Date('2022-12-31T24:00:00');
+let targetDate = new Date('2023-12-31T24:00:00');
 let timeZoneDiff = 3600000 * timeZone
 let countDownStart = 10000 // 10 sec
 
@@ -8,8 +8,8 @@ updateTime();
 
 function updateTime() {
     let currentDate = new Date();
-    let timeLeft = 1672531200000 - currentDate.getTime() - timeZoneDiff; // replace 1672531200000 with targetDate.getTime()
-    let timeLeftDate = new Date(timeLeft);
+    let timeLeft = targetDate.getTime() - currentDate.getTime();
+    let timeLeftDate = new Date(timeLeft - timeZoneDiff);
     if (timeLeft <= countDownStart) {
         document.body.classList.add('countdown');
     }
@@ -21,6 +21,7 @@ function updateTime() {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
+            //timezone
         }).format(timeLeftDate);
         let timerOutput = document.getElementsByClassName('number');
         let checks = 0;
