@@ -1,6 +1,6 @@
 let timeZone = +1;
 
-let targetDate = new Date('2022-12-31T23:00:00');
+let targetDate = new Date('2022-12-31T24:00:00');
 let timeZoneDiff = 3600000 * timeZone
 let countDownStart = 10000 // 10 sec
 
@@ -8,11 +8,11 @@ updateTime();
 
 function updateTime() {
     let currentDate = new Date();
-    let timeLeft = targetDate.getTime() - currentDate.getTime() - timeZoneDiff;
-    document.getElementById('a').innerHTML = targetDate.getTime();
-    document.getElementById('b').innerHTML = currentDate.getTime();
-    document.getElementById('c').innerHTML = timeZoneDiff;
-    document.getElementById('d').innerHTML = timeLeft;
+    let timeLeft = 1672531200000 - currentDate.getTime() - timeZoneDiff; // replace 1672531200000 with targetDate.getTime()
+    document.getElementById('a').value = targetDate.getTime();
+    document.getElementById('b').value = currentDate.getTime();
+    document.getElementById('c').value = timeZoneDiff;
+    document.getElementById('d').value = timeLeft;
     if (timeLeft <= countDownStart) {
         document.body.classList.add('countdown');
     }
