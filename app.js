@@ -8,8 +8,11 @@ updateTime();
 
 function updateTime() {
     let currentDate = new Date();
-    let timeLeft = targetDate - currentDate - timeZoneDiff;
-    console.log(timeLeft)
+    let timeLeft = targetDate.getTime() - currentDate.getTime() - timeZoneDiff;
+    document.getElementById('a').value = targetDate.getTime();
+    document.getElementById('b').value = currentDate.getTime();
+    document.getElementById('c').value = timeZoneDiff;
+    document.getElementById('d').value = timeLeft;
     if (timeLeft <= countDownStart) {
         document.body.classList.add('countdown');
     }
