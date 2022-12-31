@@ -8,11 +8,10 @@ updateTime();
 
 function updateTime() {
     const now = new Date;
-    const currentDate = new Date(now.getTime() + offset * 60 * 1000);
+    const currentDate = new Date();
     const timeLeft = countdownDate - currentDate;
     let timer = formatTime(timeLeft);
     let timerOutput = document.getElementsByClassName('number');
-    console.log(timer);
     for (let i = 0; i < timerOutput.length; i++) {
         timerOutput[i].innerHTML = timer.split(':')[i];
     }
