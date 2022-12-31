@@ -9,10 +9,10 @@ updateTime();
 function updateTime() {
     let currentDate = new Date();
     let timeLeft = targetDate.getTime() - currentDate.getTime() - timeZoneDiff;
-    document.getElementById('a').value = targetDate.getTime();
-    document.getElementById('b').value = currentDate.getTime();
-    document.getElementById('c').value = timeZoneDiff;
-    document.getElementById('d').value = timeLeft;
+    document.getElementById('a').innerHTML = targetDate.getTime();
+    document.getElementById('b').innerHTML = currentDate.getTime();
+    document.getElementById('c').innerHTML = timeZoneDiff;
+    document.getElementById('d').innerHTML = timeLeft;
     if (timeLeft <= countDownStart) {
         document.body.classList.add('countdown');
     }
