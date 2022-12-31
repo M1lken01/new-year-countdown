@@ -1,6 +1,6 @@
 let timeZone = +1;
 
-let targetDate = new Date('2022-12-31T24:00:00');
+let targetDate = new Date('2022-12-31T23:00:00');
 let timeZoneDiff = 3600000 * timeZone
 let countDownStart = 10000 // 10 sec
 
