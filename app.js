@@ -1,43 +1,30 @@
-//et timeZone = new Intl.DateTimeFormat('en-GB').resolvedOptions().timeZone;
-let timeZone = +1;
-let targetDate = new Date('2023-12-31T24:00:00');
-let timeZoneDiff = 3600000 * timeZone
-let countDownStart = 10000 // 10 sec
-
-updateTime();
+//const timeZone = new Intl.DateTimeFormat('en-GB').resolvedOptions().timeZone;
+const timeZone = +1;
+const targetDate = new Date('2023-12-31T24:00:00');
+const timeZoneDiff = 3600000 * timeZone;
+const countDownStart = 4000; // 4 sec
 
 function updateTime() {
-    let currentDate = new Date();
-    let timeLeft = targetDate.getTime() - currentDate.getTime();
-    let timeLeftDate = new Date(timeLeft - timeZoneDiff);
-    if (timeLeft <= countDownStart) {
-        document.body.classList.add('countdown');
-    }
-    if (timeLeft <= 0) {
-        document.body.classList.add('end');
-        console.log('happy new year');
-    } else {
-        let timer = new Intl.DateTimeFormat('en-GB', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            //timezone
-        }).format(timeLeftDate);
-        let timerOutput = document.getElementsByClassName('number');
-        let checks = 0;
-        for (let i = 0; i < timerOutput.length; i++) {
-            timerOutput[i].innerHTML = timer.split(':')[i];
-            if (i == 0) {
-                checks++;
-            } else if (timerOutput[i - 1].classList.contains('red')) {
-                checks++;
-            }
-            if (timer.split(':')[i] == '00' && !timerOutput[i].classList.contains('red') && checks == i + 1) {
-                timerOutput[i].classList.add('red');
-            }
-        }
-        setTimeout(function() {
-            updateTime()
-        }, 1000);
-    }
+  const timeLeft = targetDate.getTime() - new Date().getTime();
+
+  if (timeLeft <= countDownStart) document.body.classList.add('countdown');
+  if (timeLeft <= 0) return document.body.classList.add('end');
+
+  const timerArray = new Intl.DateTimeFormat('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  })
+    .format(new Date(timeLeft - timeZoneDiff))
+    .split(':');
+  const timerDisplayNumbers = document.getElementsByClassName('number');
+  const reds = document.getElementsByClassName('red').length;
+
+  for (let i = 0; i < timerDisplayNumbers.length; i++) {
+    timerDisplayNumbers[i].innerHTML = timerArray[i];
+    if (timerArray[i] === '00' && !timerDisplayNumbers[i].classList.contains('red') && reds >= i) timerDisplayNumbers[i].classList.add('red');
+  }
+  setTimeout(updateTime, 1000);
 }
+
+updateTime();
