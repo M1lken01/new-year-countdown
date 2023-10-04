@@ -11,17 +11,26 @@ body {
   font-family: 'Bebas Neue', cursive;
   background-color: var(--clr-background);
   color: var(--clr-foreground);
+  min-height: 100dvh;
 }
 
-h1 {
+h1,
+h2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 20vw;
   padding: 0;
   margin: 0;
+}
+
+h1 {
+  font-size: 20vw;
+}
+
+h2 {
+  font-size: 4vw;
 }
 
 h1 span {
@@ -32,6 +41,7 @@ h1 span {
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-direction: column;
   width: 100dvw;
   height: 100dvh;
   overflow-x: hidden;
@@ -66,9 +76,17 @@ h1 span {
 }
 
 @media screen and (max-width: 768px) {
+  #wrapper {
+    height: 90dvh;
+  }
+
   h1 {
     flex-direction: column;
     font-size: 44vw;
+  }
+
+  h2 {
+    font-size: 8vw;
   }
 
   .split {
