@@ -4,7 +4,7 @@ const timeZone = new Date().getTimezoneOffset() / -60; // this works for some br
 const targetDate = new Date('2023-12-31T24:00:00');
 const timeZoneDiff = 3600000 * timeZone;
 const countDownStart = 4000; // 4 sec
-const countDown = document.URL.split('?countdown=')[1] != false;
+const countDown = document.URL.split('?countdown=')[1] == false ? false : true;
 
 function updateTime() {
   const currentTime = new Date();
