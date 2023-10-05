@@ -1,12 +1,10 @@
-//const timeZone = new Intl.DateTimeFormat('en-GB').resolvedOptions().timeZone;
-//const timeZone = +2;
-const timeZone = new Date().getTimezoneOffset() / -60; // this works for some browsers
-const targetDate = new Date('2023-12-31T24:00:00');
-const timeZoneDiff = 3600000 * timeZone;
+let timeZone = +1;
+const targetDate = new Date('2023-10-05T24:00:00');
 const countDownStart = 4000; // 4 sec
 const countDown = document.URL.split('?countdown=')[1] == false ? false : true;
 
 function updateTime() {
+  const timeZoneDiff = 3600000 * timeZone;
   const currentTime = new Date();
   const timeLeft = countDown ? targetDate.getTime() - currentTime.getTime() - timeZoneDiff : currentTime.getTime();
 
@@ -42,3 +40,5 @@ function updateTime() {
 }
 
 updateTime();
+
+const setTimezone = (zone) => (timeZone = zone);
