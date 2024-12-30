@@ -1,5 +1,5 @@
 let timeZone = +1;
-const targetDate = new Date('2023-12-31T24:00:00');
+const targetDate = new Date(`${(new Date()).getFullYear()}-12-31T24:00:00`);
 const countDownStart = 4000; // 4 sec
 const countDown = document.URL.split('?countdown=')[1] == false ? false : true;
 
